@@ -34,8 +34,8 @@ on:
         type: boolean
 
       ytuhd:
-        description: "Integrate YTUHD"
-        default: true
+        description: "Integrate YTUHD(21.25.5+ incompatible)"
+        default: false
         required: false
         type: boolean
 
@@ -69,20 +69,14 @@ on:
         required: false
         type: boolean
 
-      ytsilentvote:
-        description: "Integrate YTSilentVote"
-        default: true
-        required: false
-        type: boolean
-
       ytweaks:
-        description: "Integrate YTweaks"
+        description: "Integrate YTweaks(20.10.4+)"
         default: true
         required: false
         type: boolean
 
       gonerino:
-        description: "Integrate Gonerino"
+        description: "Integrate Gonerino(21.25.5+)"
         default: true
         required: false
         type: boolean
@@ -118,8 +112,8 @@ on:
         type: boolean
 
       isponsorblock:
-        description: "Integrate iSponsorBlock"
-        default: true
+        description: "Integrate iSponsorBlock(21.25.5+ incompatible)"
+        default: false
         required: false
         type: boolean
 
@@ -130,13 +124,19 @@ on:
         type: boolean
 
       volumeboost:
-        description: "Integrate VolumeBoostYT"
+        description: "Integrate VolumeBoostYT(iOS16+)"
         default: false
         required: false
         type: boolean
 
       nativeshare:
-        description: "Integrate YTNativeShare"
+        description: "Integrate YTNativeShare(19.35.3+)"
+        default: false
+        required: false
+        type: boolean
+
+      pleasedontstopthemusic:
+        description: "Integrate PleaseDontStopTheMusic"
         default: false
         required: false
         type: boolean
@@ -160,7 +160,6 @@ jobs:
       ytabconfig: ${{ inputs.ytabconfig }}
       youquality: ${{ inputs.youquality }}
       youslider: ${{ inputs.youslider }}
-      ytsilentvote: ${{ inputs.ytsilentvote }}
       ytweaks: ${{ inputs.ytweaks }}
       youchoose: ${{ inputs.youchoose }}
       gonerino: ${{ inputs.gonerino }}
@@ -170,7 +169,8 @@ jobs:
       youloop: ${{ inputs.youloop }}
       youpro: false
       opensafari: ${{ inputs.opensafari }}
-
+      pleasedontstopthemusic: ${{ inputs.pleasedontstopthemusic }}
+      
   package:
     name: Build IPA
     runs-on: macos-15
@@ -189,7 +189,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,demc,isponsorblock,ythold,volumeboost,nativeshare,opensafari,youpip,ryd,ytabconfig,youquality,youslider,ytsilentvote,ytweaks,youchoose,gonerino,yougetcaption,youspeed,youmute,youloop
+          exclude_inputs: bundle_id,display_name,demc,isponsorblock,ythold,volumeboost,nativeshare,opensafari,youpip,ytuhd,ryd,ytabconfig,youquality,youslider,ytweaks,youchoose,gonerino,yougetcaption,youspeed,youmute,youloop,pleasedontstopthemusic
 
       - name: Download and Validate IPA
         run: |
